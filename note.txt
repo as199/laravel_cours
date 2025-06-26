@@ -1,0 +1,54 @@
+1. laravel gere les autorisations d'acces au differents URL (routes) avec les middlewares
+
+exemple:
+/admin: il faut le role admin
+/clients: il faut le role client
+
+
+La mise en cache
+1. mise en cache automatique que laravel (config, routes)
+   NB: apres chaque modification des routes et du .env , il faut
+ optimiser pour mettre à jour le cache: php artisan optimize
+2. mise en cache manuel (fais par le developpeur)
+   ceci consiste à recuperer des infos de la base de donnée et de le mettre en cache pour accelerer la nouvelle recuperation
+   requete 1: 30 secondes
+   requete 2: 10 secondes
+
+3. Passage d'informations la vue de maniere dynamique:
+
+  on le mets au second parametre de la methde view
+
+4. Migration : les methodes disponible avec Bleuprint
+ id() => int auto increment primary key
+ bigIncrements('id) => BigInt auto increment primary key
+ increments('id') =>int auto increment primary key
+ string('nom_colonne', la taille  qui par defaut 255) => varchar(taille)
+ text('nom_colonne') => text
+ integer('nom_colonne') => int
+ bigInteger('nom_colonne') => BigInt
+ float('nom_colonne') => float
+ double('nom_colonne') => double
+ decimal('nom_colonne', 8, 2) => Decimal(8,2)
+ boolean('nom_colonne') => boolean
+ date('nom_colonne') => date
+ dateTime('nom_colonne') => dateTime
+ timestamp('nom_colonne') = > timestamp (automatique)
+ binary('nom_colonne') => BLOB
+ json('nom_colonne') => json
+ uuid('nom_colonne') => uuid (string 36 char)
+ foreign('nom_colonne')->refereces('cle_referece')->on('nom_table_lié')
+
+ NB: pour chacun des methodes on peut chainer d'autres methodes
+ Exemple:
+ ->nullable()
+ ->unique()
+ ->default()
+ ->unsigned()
+ ->after()
+ ->comment()
+ ->change()
+ ->before()
+ etc ...
+
+
+
