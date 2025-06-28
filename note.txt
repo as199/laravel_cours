@@ -50,5 +50,38 @@ La mise en cache
  ->before()
  etc ...
 
+5. validation du formulaire
+
+ A. il faut toujours faire une double validation (html + laravel (FormRequest, Controller))
+ B . il faut toujours privilégié la validation en passant par les FormRequest en laravel
+
+ validation par regex : c'est un validation en utilisant un pattern
+
+
+
+### BONNE PRATIQUE POUR LA CREATION  ET MODIFICATION DE DONNEES
+
+1. dans le modele spécifier les colonnes à renseigner pour l'insertion ou modification de donnée
+2. validation des donnees au niveau de la FormRequest
+3. recuperation des donnees déjà validées e utilisant la méthode validated() de la FormRequest
+
+
+NB: lors de la validation si une colonne a la régle unique en création, alors en modification, il faudra impérativement s'assuré
+   que sa validatio soit comme ceci:
+   'phone' => 'required|string|min:9|max:12|unique:nom_de_la_table,nom_de_la_colonne, ' . id_de_item_a_modifier,
+   Exemple:
+   'phone' => 'required|string|min:9|max:12|unique:contacts,phone, ' . $this->contact->id,
+
+
+
+############## TP RECAP DES SEANCES PRECEDENTES ##################
+Créer un nouveau projet laravel, et faire la gestion complete des etudiants.
+1. un étudiant a :
+ prenom, nom, numero de matricule(unique), telephone (unique), age, genre(M ou F), date de naissance, adresse
+
+ - il faudra gérer la validation du formulaire et seul les numéros de telephone du sénéga sont autoriser
+ - utiliser les FormRequest
+ 
+
 
 

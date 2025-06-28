@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
-
+use App\Http\Requests\ContactStoreRequest;
+use App\Http\Requests\ContactUpdateRequest;
 class ContactController extends Controller
 {
     /**
@@ -28,16 +29,13 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactStoreRequest $request)
     {
+        
         // enregistrement sans validation
-        Contact::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-        ]);
+        Contact::create($request->validated());
         // redirection vers la liste des contacts
-        return redirect()->route('contacts.index');
+        return redirect()->route('contacts.index')->with('success', 'Contact créé avec succès');
     }
 
     /**
@@ -59,16 +57,12 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(ContactUpdateRequest $request, Contact $contact)
     {
         // mise a jour sans validation
-        $contact->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-        ]);
+        $contact->update($request->validated());
         // redirection vers la liste des contacts
-        return redirect()->route('contacts.index');
+        return redirect()->route('contacts.index')->with('success', 'Contact mis à jour avec succès');
     }
 
     /**

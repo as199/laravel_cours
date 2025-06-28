@@ -15,4 +15,14 @@ Route::resource('contacts', ContactController::class);
 
 
 
+// page note found 
+/**
+ * IL FAUT TOUJOURS LE PLACER EN BAS DE LA LISTE DES ROUTES
+ */
+Route::fallback(function () {
+    return view('errors.404');
+});
+
+
+
 
