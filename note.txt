@@ -79,9 +79,9 @@ Créer un nouveau projet laravel, et faire la gestion complete des etudiants.
 1. un étudiant a :
  prenom, nom, numero de matricule(unique), telephone (unique), age, genre(M ou F), date de naissance, adresse
 
- - il faudra gérer la validation du formulaire et seul les numéros de telephone du sénéga sont autoriser
+ - il faudra gérer la validation du formulaire et seul les numéros de telephone du sénégal sont autoriser
  - utiliser les FormRequest
- 
+
 
 
 
